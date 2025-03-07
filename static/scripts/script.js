@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var navLinks = document.getElementById("navlinks");
 
     function showMenu() {
@@ -14,35 +14,55 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 /**
- * Stores answers and moves to next set
+ * Stores selected answers from the form into localStorage
  */
-function submitAngerTest() {
+function storeAngerAnswers() {
     let answers = JSON.parse(localStorage.getItem("anger_answers")) || {};
-    
+
     document.querySelectorAll("#anger-test input[type='radio']:checked").forEach((radio) => {
         answers[radio.name] = parseInt(radio.value);
     });
 
     localStorage.setItem("anger_answers", JSON.stringify(answers));
-    window.location.href = "/anger_2";  // Redirect to anger_2.html
 }
 
 /**
- * Final Submission - Store in Database via API
+ * Moves to the next question set and stores responses
  */
-function submitFinalTest() {
+function submitAngerTest() {
+    storeAngerAnswers();
+    window.location.href = "/anger_2"; // Redirect to the next part of the test
+}
+
+/**
+ * Moves from anger_2 to anger_3 while storing answers
+ */
+function submitAngerTestPart2() {
+    storeAngerAnswers();
+    window.location.href = "/anger_3"; // Redirect to the final part of the test
+}
+
+/**
+ * Submits all answers to the backend API at the final step
+ */
+function submitFinalAngerTest() {
+    storeAngerAnswers();
     let answers = JSON.parse(localStorage.getItem("anger_answers"));
-    
+
     fetch("/api/save-response", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            email: "test@example.com", 
-            responses: answers
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ responses: answers })
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Submission Successful:", data);
+            localStorage.removeItem("anger_answers"); // Clear storage after submission
+            window.location.href = "/submit_anger"; // Redirect to results page
         })
-    }).then(response => response.json())
-    .then(data => {
-        console.log("Submission successful:", data);
-        window.location.href = "/submit"; // Redirect to submission page
-    }).catch(error => console.error("Error:", error));
+        .catch(error => {
+            console.error("Error submitting test:", error);
+        });
 }

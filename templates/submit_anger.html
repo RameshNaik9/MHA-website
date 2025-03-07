@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anger Test Submission</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+
+<body>
+    <section class="submit">
+        <nav>
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.jpg') }}"></a>
+        </nav>
+
+        <h1>Thank You for Submitting</h1>
+        <subsection class="results">
+            <div id="result-text"></div>
+            <a href="{{ url_for('index') }}" class="hero-btn green-btn">Go to Home</a>
+        </subsection>
+    </section>
+
+    <script>
+        function calculateScore() {
+            let answers = JSON.parse(localStorage.getItem("anger_answers")) || {};
+            let totalScore = Object.values(answers).reduce((acc, val) => acc + val, 0);
+            let resultText = "";
+
+            if (totalScore <= 20) {
+                resultText = "Your Anger Level is low. Tips are sufficient.";
+            } else if (totalScore > 20 && totalScore <= 40) {
+                resultText = "Moderate Anger Level. Consider stress management techniques.";
+            } else {
+                resultText = "High Anger Level. Seek professional help.";
+            }
+
+            document.getElementById("result-text").innerText = resultText;
+        }
+
+        window.onload = calculateScore;
+    </script>
+</body>
+
+</html>

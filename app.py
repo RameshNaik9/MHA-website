@@ -46,9 +46,9 @@ def create_app():
     def anger_3():
         return render_template("anger_3.html")
 
-    @app.route("/submit")
+    @app.route("/submit_anger")
     def submit():
-        return render_template("submit.html")
+        return render_template("submit_anger.html")
 
     # Academic Stress Route
     @app.route("/academic_stress")

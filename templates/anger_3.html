@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anger Test - Set C1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+</head>
+
+<body>
+    <section class="set_c1">
+        <nav>
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.jpg') }}"></a>
+        </nav>
+
+        <h2>Anger Questionnaire - Set C1</h2>
+        <form id="anger-test">
+            <div class="question">
+                <label>10. I calm down faster than most people.</label>
+                <div class="options">
+                    <input type="radio" name="q10" value="5"> Strongly Agree
+                    <input type="radio" name="q10" value="4"> Agree
+                    <input type="radio" name="q10" value="3"> Neutral
+                    <input type="radio" name="q10" value="2"> Disagree
+                    <input type="radio" name="q10" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <div class="question">
+                <label>11. I can identify triggers that make me angry and take steps to avoid them.</label>
+                <div class="options">
+                    <input type="radio" name="q11" value="5"> Strongly Agree
+                    <input type="radio" name="q11" value="4"> Agree
+                    <input type="radio" name="q11" value="3"> Neutral
+                    <input type="radio" name="q11" value="2"> Disagree
+                    <input type="radio" name="q11" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <div class="question">
+                <label>12. I am angrier than I am willing to admit.</label>
+                <div class="options">
+                    <input type="radio" name="q12" value="5"> Strongly Agree
+                    <input type="radio" name="q12" value="4"> Agree
+                    <input type="radio" name="q12" value="3"> Neutral
+                    <input type="radio" name="q12" value="2"> Disagree
+                    <input type="radio" name="q12" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <div class="question">
+                <label>13. Given enough provocation, I may hit another person.</label>
+                <div class="options">
+                    <input type="radio" name="q13" value="5"> Strongly Agree
+                    <input type="radio" name="q13" value="4"> Agree
+                    <input type="radio" name="q13" value="3"> Neutral
+                    <input type="radio" name="q13" value="2"> Disagree
+                    <input type="radio" name="q13" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <div class="question">
+                <label>14. My friends have commented that I don't seem to be able to control my anger.</label>
+                <div class="options">
+                    <input type="radio" name="q14" value="5"> Strongly Agree
+                    <input type="radio" name="q14" value="4"> Agree
+                    <input type="radio" name="q14" value="3"> Neutral
+                    <input type="radio" name="q14" value="2"> Disagree
+                    <input type="radio" name="q14" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <button type="button" onclick="window.location.href='{{ url_for('anger_2') }}';">Before</button>
+            <button type="button" onclick="submitFinalAngerTest()">Submit</button>
+        </form>
+    </section>
+
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+</body>
+
+</html>
