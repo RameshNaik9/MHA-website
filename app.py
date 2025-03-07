@@ -62,8 +62,15 @@ def create_app():
         if not data or "responses" not in data:
             return jsonify({"error": "Invalid request"}), 400
 
-        mongo.db.responses.insert_one(data)
-        return jsonify({"message": "Response saved successfully"}), 201
+        # Store in MongoDB
+        mongo.db.responses.insert_one({
+            "email": data.get("email", "anonymous"),
+            "score": data["score"],  # Store final score
+            "responses": data["responses"]
+        })
+        
+        return jsonify({"message": "Response saved successfully", "score": data["score"]}), 201
+
 
     return app
 

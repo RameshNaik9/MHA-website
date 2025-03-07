@@ -67,23 +67,21 @@ function submitAngerTestPart2() {
  * Final submission - Sends all stored answers to backend
  */
 function submitFinalAngerTest() {
-    storeAngerAnswers();
-    let answers = JSON.parse(localStorage.getItem("anger_answers"));
+    let answers = JSON.parse(localStorage.getItem("anger_answers")) || {};
+    let totalScore = Object.values(answers).reduce((acc, val) => acc + val, 0);
 
     fetch("/api/save-response", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ responses: answers })
-    })
-    .then(response => response.json())
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            email: "user@example.com",  // Change with actual user
+            score: totalScore, 
+            responses: answers 
+        })
+    }).then(response => response.json())
     .then(data => {
-        console.log("Submission Successful:", data);
-        localStorage.removeItem("anger_answers");  // Clear storage after submission
-        window.location.href = "/submit_anger";  // Redirect to results page
-    })
-    .catch(error => {
-        console.error("Error submitting test:", error);
-    });
+        console.log("Submission successful:", data);
+        localStorage.removeItem("anger_answers");  // Clear after submission
+        window.location.href = "/submit_anger"; // Redirect to results
+    }).catch(error => console.error("Error:", error));
 }
