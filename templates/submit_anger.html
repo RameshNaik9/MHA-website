@@ -22,14 +22,13 @@
     </section>
 
     <script>
-        function calculateScore() {
-            let answers = JSON.parse(localStorage.getItem("anger_answers")) || {};
-            let totalScore = Object.values(answers).reduce((acc, val) => acc + val, 0);
+        function displayFinalScore() {
+            let totalScore = parseInt(localStorage.getItem("anger_total_score") || "0");
 
             let resultText = "";
 
             // Ensure score is displayed properly
-            if (!totalScore || isNaN(totalScore)) {
+            if (isNaN(totalScore)) {
                 totalScore = 0;
             }
 
@@ -46,12 +45,13 @@
             document.getElementById("score").innerText = totalScore;
             document.getElementById("result-text").innerText = resultText;
 
-            // Remove the stored score after displaying it to avoid keeping old data
-            localStorage.removeItem("anger_answers");
+            // Remove stored score after showing result to prevent issues in new attempts
+            localStorage.removeItem("anger_total_score");
         }
 
-        window.onload = calculateScore;
+        window.onload = displayFinalScore;
     </script>
+
 
 </body>
 
