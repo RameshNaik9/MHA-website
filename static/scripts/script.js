@@ -21,26 +21,28 @@ function resetAngerTest() {
 }
 
 
+
 /**
- * Stores selected answers from the form into localStorage
+ * Stores selected answers from the form into localStorage, appending new answers
  */
 function storeAngerAnswers() {
-    let answers = {};  // Ensure new object, no old answers remain
+    let storedAnswers = JSON.parse(localStorage.getItem("anger_answers")) || {};  // Retrieve existing answers
 
     document.querySelectorAll("#anger-test input[type='radio']:checked").forEach((radio) => {
-        answers[radio.name] = parseInt(radio.value);
+        storedAnswers[radio.name] = parseInt(radio.value);  // Store selected answers
     });
 
-    localStorage.setItem("anger_answers", JSON.stringify(answers));
+    localStorage.setItem("anger_answers", JSON.stringify(storedAnswers));  // Save updated answers
 }
 
 /**
- * Calculates total score from stored answers
+ * Calculates total score from ALL stored answers
  */
 function calculateAngerScore() {
     let answers = JSON.parse(localStorage.getItem("anger_answers")) || {};
     return Object.values(answers).reduce((sum, value) => sum + value, 0);
 }
+
 
 /**
  * Handles submission from anger_1 and determines next step
@@ -70,9 +72,7 @@ function submitAngerTestPart2() {
     }
 }
 
-/**
- * Final submission - Ensures last section is stored before sending to backend
- */
+
 /**
  * Final submission - Ensures last section is stored before sending to backend
  */
@@ -98,4 +98,5 @@ function submitFinalAngerTest() {
         window.location.href = "/submit_anger"; // Redirect to results
     }).catch(error => console.error("Error:", error));
 }
+
 

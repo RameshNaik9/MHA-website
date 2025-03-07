@@ -47,10 +47,12 @@
 
             // Remove stored score after showing result to prevent issues in new attempts
             localStorage.removeItem("anger_total_score");
+            localStorage.removeItem("anger_answers");
         }
 
         window.onload = displayFinalScore;
     </script>
+
 
 
 </body>
