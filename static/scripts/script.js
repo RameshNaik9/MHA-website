@@ -14,10 +14,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /**
+ * Clears previous answers before starting a new test
+ */
+function resetAngerTest() {
+    localStorage.removeItem("anger_answers");
+}
+
+
+/**
  * Stores selected answers from the form into localStorage
  */
 function storeAngerAnswers() {
-    let answers = JSON.parse(localStorage.getItem("anger_answers")) || {};
+    let answers = {};  // Ensure new object, no old answers remain
 
     document.querySelectorAll("#anger-test input[type='radio']:checked").forEach((radio) => {
         answers[radio.name] = parseInt(radio.value);
@@ -31,8 +39,7 @@ function storeAngerAnswers() {
  */
 function calculateAngerScore() {
     let answers = JSON.parse(localStorage.getItem("anger_answers")) || {};
-    let totalScore = Object.values(answers).reduce((sum, value) => sum + value, 0);
-    return totalScore;
+    return Object.values(answers).reduce((sum, value) => sum + value, 0);
 }
 
 /**
@@ -43,7 +50,7 @@ function submitAngerTest() {
     let totalScore = calculateAngerScore();
 
     if (totalScore < 10) {
-        window.location.href = "/submit_anger";  // Directly submit
+        window.location.href = "/submit_anger";  // Directly submit if score is low
     } else {
         window.location.href = "/anger_2";  // Move to next section
     }
@@ -64,9 +71,10 @@ function submitAngerTestPart2() {
 }
 
 /**
- * Final submission - Sends all stored answers to backend
+ * Final submission - Ensures last section is stored before sending to backend
  */
 function submitFinalAngerTest() {
+    storeAngerAnswers(); // Store last answers before submission
     let answers = JSON.parse(localStorage.getItem("anger_answers")) || {};
     let totalScore = Object.values(answers).reduce((acc, val) => acc + val, 0);
 
@@ -85,3 +93,4 @@ function submitFinalAngerTest() {
         window.location.href = "/submit_anger"; // Redirect to results
     }).catch(error => console.error("Error:", error));
 }
+

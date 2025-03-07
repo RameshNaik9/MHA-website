@@ -25,8 +25,15 @@
         function calculateScore() {
             let answers = JSON.parse(localStorage.getItem("anger_answers")) || {};
             let totalScore = Object.values(answers).reduce((acc, val) => acc + val, 0);
+
             let resultText = "";
 
+            // Ensure score is displayed properly
+            if (!totalScore || isNaN(totalScore)) {
+                totalScore = 0;
+            }
+
+            // Determine the user's anger level
             if (totalScore <= 20) {
                 resultText = "Your Anger Level is low. Tips are sufficient.";
             } else if (totalScore > 20 && totalScore <= 40) {
@@ -35,12 +42,17 @@
                 resultText = "High Anger Level. Seek professional help.";
             }
 
-            document.getElementById("score").innerText = totalScore; // Show numeric score
-            document.getElementById("result-text").innerText = resultText; // Show evaluation
+            // Update the UI with the score and evaluation
+            document.getElementById("score").innerText = totalScore;
+            document.getElementById("result-text").innerText = resultText;
+
+            // Remove the stored score after displaying it to avoid keeping old data
+            localStorage.removeItem("anger_answers");
         }
 
         window.onload = calculateScore;
     </script>
+
 </body>
 
 </html>
