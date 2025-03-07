@@ -27,23 +27,44 @@ function storeAngerAnswers() {
 }
 
 /**
- * Moves to the next question set and stores responses
+ * Calculates total score from stored answers
+ */
+function calculateAngerScore() {
+    let answers = JSON.parse(localStorage.getItem("anger_answers")) || {};
+    let totalScore = Object.values(answers).reduce((sum, value) => sum + value, 0);
+    return totalScore;
+}
+
+/**
+ * Handles submission from anger_1 and determines next step
  */
 function submitAngerTest() {
     storeAngerAnswers();
-    window.location.href = "/anger_2"; // Redirect to the next part of the test
+    let totalScore = calculateAngerScore();
+
+    if (totalScore < 10) {
+        window.location.href = "/submit_anger";  // Directly submit
+    } else {
+        window.location.href = "/anger_2";  // Move to next section
+    }
 }
 
 /**
- * Moves from anger_2 to anger_3 while storing answers
+ * Handles submission from anger_2 and determines next step
  */
 function submitAngerTestPart2() {
     storeAngerAnswers();
-    window.location.href = "/anger_3"; // Redirect to the final part of the test
+    let totalScore = calculateAngerScore();
+
+    if (totalScore < 20) {
+        window.location.href = "/submit_anger";  // Submit if score is still low
+    } else {
+        window.location.href = "/anger_3";  // Move to final section
+    }
 }
 
 /**
- * Submits all answers to the backend API at the final step
+ * Final submission - Sends all stored answers to backend
  */
 function submitFinalAngerTest() {
     storeAngerAnswers();
@@ -56,13 +77,13 @@ function submitFinalAngerTest() {
         },
         body: JSON.stringify({ responses: answers })
     })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Submission Successful:", data);
-            localStorage.removeItem("anger_answers"); // Clear storage after submission
-            window.location.href = "/submit_anger"; // Redirect to results page
-        })
-        .catch(error => {
-            console.error("Error submitting test:", error);
-        });
+    .then(response => response.json())
+    .then(data => {
+        console.log("Submission Successful:", data);
+        localStorage.removeItem("anger_answers");  // Clear storage after submission
+        window.location.href = "/submit_anger";  // Redirect to results page
+    })
+    .catch(error => {
+        console.error("Error submitting test:", error);
+    });
 }
