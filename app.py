@@ -73,13 +73,6 @@ def create_app():
         
         return jsonify({"message": "Response saved successfully", "score": data["score"]}), 201
     
-    @app.route("/api/get-latest-score", methods=["GET"])
-    def get_latest_score():
-        latest_entry = mongo.db.responses.find_one({}, sort=[("_id", -1)])  # Get last entry
-        if latest_entry:
-            return jsonify({"score": latest_entry.get("score", 0)})
-        return jsonify({"score": 0})  # If no entry found, return 0
-
 
     return app
 
