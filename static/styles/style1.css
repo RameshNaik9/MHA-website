@@ -1,0 +1,979 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.header {
+    min-height: 100vh;
+    width: 100%;
+    background-image: url(images/mpp2.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    width: 150px;
+}
+
+.nav-links {
+    flex: 1;
+    text-align: center;
+}
+
+.nav-links ul li {
+    list-style: noe;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav-links ul li a {
+    display: block;
+    padding: 20px 25px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    text-align: center;
+}
+
+.navlinks ul li ul.dd1 li {
+    display: block;
+}
+
+.navlinks ul li ul.dd1 {
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+
+.navlinks ul li a:hover {
+    background: #fff;
+}
+
+.navlinks ul li:hover ul.dd1 {
+    display: block;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    display: inline-block;
+    text-decoration: none;
+    color: #0077FF;
+    padding: 16px 20px;
+    transition: background-color 0.3s;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #0077FF;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0077FF;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #0077FF;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #0077FF;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Style the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #0077FF;
+}
+
+.nav-links ul li::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav-links ul li:hover::after {
+    width: 100%;
+}
+
+.nav-links .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.nav-links .btnLogin-popup:hover {
+    background: #fff;
+    color: #162938;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+.hero-btn:hover {
+    border: 1px solid #8FE90D;
+    background: #8FE90D;
+    transition: 1s;
+}
+
+nav .fa {
+    display: none;
+}
+
+@media(max-width: 700px) {
+
+    .nav-links ul li {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        background: #8FE90D;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200;
+        text-align: left;
+        z-index: 2;
+        transition: 1s;
+    }
+
+    nav .fa {
+        display: block;
+        color: #fff;
+        margin: 10px;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    .nav-links ul {
+        padding: 30px;
+    }
+}
+
+/*----------about us page-----------*/
+
+.sub-header {
+    height: 50vh;
+    width: 100%;
+    background-image: url(images/mpp3.jpg.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #000000;
+}
+
+.sub-header h1 {
+    margin-top: 100px;
+}
+
+.about-us {
+    width: 80%;
+    margin: auto;
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+
+.about-col {
+
+    flex-basis: 48%;
+    padding: 30px 2px;
+}
+
+.about-col h1 {
+    padding-top: 0;
+}
+
+.about-col p {
+    font-size: 13px;
+    padding: 15px 0 25px;
+}
+
+.about-col img {
+    width: 100%;
+}
+
+.green-btn {
+    border: 1px solid #8FE90D;
+    background: transparent;
+    color: #8FE90D;
+}
+
+.green-btn:hover {
+    color: #fff;
+}
+
+.wrapper {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 35%;
+    overflow: hidden;
+    transform: scale(0);
+    transition: transform .5s ease, height .2s ease;
+}
+
+.wrapper .active-popup {
+    transform: scale(1);
+}
+
+.wrapper.active {
+    height: 520px;
+
+}
+
+.wrapper .form-box {
+    width: 100%;
+    padding: 40px;
+}
+
+.form-box h2 {
+    font-size: 2em;
+    color: #000000;
+    text-align: center;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #000;
+    margin: 30px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #000;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #000;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #000;
+    line-height: 57px;
+}
+
+.remember-forgot {
+    font-size: .9em;
+    color: #000;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input {
+    accent-color: #000;
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: #000;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #000;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+}
+
+.login-register {
+    font-size: .9em;
+    color: #000;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.login-register p a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register p a:hover {
+    text-decoration: underline;
+}
+
+.wrapper .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #000;
+    font-size: 2em;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.wrapper .form-box.login {
+    transition: transform .18s ease;
+    transform: translateX(0);
+    transition-delay: .7s;
+}
+
+.wrapper .active .form-box.login {
+    /* transition: none;*/
+    transition-delay: 0s;
+    transform: translateX(-400px);
+}
+
+.wrapper .form-box.register {
+    position: absolute;
+    transition: none;
+    transform: translateX(-400px);
+}
+
+.wrapper .active .form-box.login {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+/* ----------start test page------------------*/
+
+.start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    /* Adjust as needed */
+    margin: 0;
+}
+
+.start-btn {
+    padding: 10px 20px;
+    border: 1px solid #07c2f6;
+    background: transparent;
+    color: #07def6;
+}
+
+.start-btn:hover {
+    color: #000;
+}
+
+.start-test {
+    height: 50vh;
+    width: 100%;
+    background-image: url(images/orange.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #000000;
+}
+
+.start-test h1 {
+    margin-top: 100px;
+}
+
+.set_a {
+    height: 250vh;
+    width: 100%;
+    background-image: url(images/orange.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #000;
+    padding: 0;
+
+}
+
+.set_b {
+    height: 250vh;
+    width: 100%;
+    background-image: url(images/orange.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #000;
+}
+
+.set_c {
+    height: 250vh;
+    width: 100%;
+    background-image: url(images/orange.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #000;
+}
+
+.Our_approach {
+    height: 100vh;
+    width: 100%;
+    background-image: url(images/coun2.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #000;
+}
+
+.Our_approach h1 {
+    color: #fff;
+    text-align: center;
+}
+
+.Our_approach .our_app h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+}
+
+.Our_approach .our_app p {
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+}
+
+
+.container2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circular-box {
+    position: absolute;
+    width: 4cm;
+    /* diameter of the circle */
+    height: 4cm;
+    /* diameter of the circle */
+    background-color: lightblue;
+    border-radius: 50%;
+    /* to make it circular */
+    top: calc(50% - 2cm);
+    /* half the diameter */
+    left: calc(50% - 2cm);
+    /* half the diameter */
+}
+
+.content-box {
+    position: absolute;
+    width: 5cm;
+    height: 1cm;
+    background-color: lightgreen;
+    border: 1px solid black;
+}
+
+/* Adjust positions of content boxes */
+.content-box:nth-child(1) {
+    top: calc(50% - 3cm);
+    left: calc(50% - 5cm);
+}
+
+.content-box:nth-child(2) {
+    top: calc(50% - 2cm);
+    left: calc(50% + 3cm);
+}
+
+.content-box:nth-child(3) {
+    top: calc(50% - 1cm);
+    left: calc(50% - 5cm);
+}
+
+form {
+    width: 100%;
+    text-align: left;
+}
+
+label {
+    display: inline-block;
+    width: 60px;
+    /* Adjust the width as needed */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 0;
+}
+
+h2 {
+    color: #333;
+}
+
+form {
+    background-color: #abcc34;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    /* Set maximum width for the form */
+    margin: 0 auto;
+    /* Center the form horizontally */
+    position: left;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 120px;
+    font-weight: bold;
+}
+
+input[type="text"],
+select {
+    width: calc(100% - 130px);
+    /* Adjust as needed */
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: #c41e1e;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #51cace;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 0px;
+}
+
+h2 {
+    color: #333;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="radio"]:checked+label {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #95a045;
+}
+
+.question {
+    margin-bottom: 20px;
+    width: 25%;
+    /* Set the width to 100% */
+
+}
+
+label {
+    display: inline-block;
+    width: 100%;
+    /* Set the width to 100% */
+    margin-bottom: 5px;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    /* Set the width to 100% */
+}
+
+button[type='next_A'] {
+    background-color: #4caf50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+button[type='next_A']:hover {
+    background-color: #45a049;
+    /* Darker Green */
+}
+
+button[type='next_B1'] {
+    background-color: #4caf50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+button[type='next_B1']:hover {
+    background-color: #45a049;
+    /* Darker Green */
+}
+
+button[type='next_B2'] {
+    background-color: #4caf50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+button[type='next_B2']:hover {
+    background-color: #45a049;
+    /* Darker Green */
+}
+
+button[type="button"] {
+    /* Your button styles */
+    background-color: #007bff;
+    /* Blue color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button[type="button"]:hover {
+    background-color: #0056b3;
+    /* Darker blue color on hover */
+}
+
+
+button[type="before"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button[type="before"]:hover {
+    background-color: #0056b3;
+}
+
+.sub1 {
+    height: 250vh;
+    width: 100%;
+    background-image: url(images/setd.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #000;
+    padding: 0;
+
+}
+
+.Tip {
+    height: 100vh;
+    width: 100%;
+    background-image: url(images/dry.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #000;
+}
+
+.Anger_Tips {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.Anger_Tips h1 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.Anger_Tips ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.Anger_Tips li {
+    margin-bottom: 15px;
+}
+
+.set_AS {
+    height: 250vh;
+    width: 100%;
+    background-image: url(images/acad_stress.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #000;
+    padding: 0;
+}
+
+
+.question_as {
+    color: #c8e026;
+    /* Change color to white */
+    margin-bottom: 20px;
+    width: 25%;
+}
+
+.Tip1 {
+    height: 100vh;
+    width: 100%;
+    background-image: url(images/ob.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #000;
+}
+
+.AcademicStress_Tips {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #eec669;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.AcademicStress_Tips h1 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.AcademicStress_Tips ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.AcademicStress_Tips li {
+    margin-bottom: 15px;
+}
+
+.subas1 {
+    height: 250vh;
+    width: 100%;
+    background-image: url(images/dry.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #000;
+    padding: 0;
+
+}
+
+/* CSS for button hover effect */
+button[type='next_as'] {
+    /* Your button styles */
+    background-color: #007bff;
+    /* Button background color */
+    color: #fff;
+    /* Button text color */
+    padding: 10px 20px;
+    /* Button padding */
+    border: none;
+    /* Remove button border */
+    border-radius: 5px;
+    /* Add border radius */
+    cursor: pointer;
+    /* Change cursor to pointer on hover */
+
+    /* Transition for smooth hover effect */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+button[type='next_as']:hover {
+    background-color: #0056b3;
+    /* Change background color on hover to blue */
+}
+
+/* CSS for button hover effect */
+button[type='next_B1_as'],
+button[type='next_B2_as'] {
+    /* Your button styles */
+    background-color: #007bff;
+    /* Button background color */
+    color: #fff;
+    /* Button text color */
+    padding: 10px 20px;
+    /* Button padding */
+    border: none;
+    /* Remove button border */
+    border-radius: 5px;
+    /* Add border radius */
+    cursor: pointer;
+    /* Change cursor to pointer on hover */
+
+    /* Transition for smooth hover effect */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+button[type='next_B1_as']:hover,
+button[type='next_B2_as']:hover {
+    background-color: #0056b3;
+    /* Change background color on hover to blue */
+}

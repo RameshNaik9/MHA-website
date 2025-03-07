@@ -1,10 +1,10 @@
 import os
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
+from flask_pymongo import PyMongo
 from database import init_db
 from routes import routes
 from config import Config
-
 
 def create_app():
     app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -12,6 +12,7 @@ def create_app():
 
     # Initialize Database
     init_db(app)
+    mongo = PyMongo(app)
 
     # Enable CORS for frontend-backend communication
     CORS(app)
@@ -31,20 +32,38 @@ def create_app():
     @app.route("/our-approach")
     def our_approach():
         return render_template("Our_Approach.html")
-    
-    @app.route("/set_A")
-    def set_a():
-        return render_template("set_A.html")
-    
-    @app.route("/set_A-AS")
-    def set_a_as():
-        return render_template("set_A-AS.html")
 
-    @app.route("/set_B1")
-    def set_b1():
-        return render_template("set_B1.html")
+    # Anger Test Routes (renamed from set_A, set_B1, set_C1)
+    @app.route("/anger_1")
+    def anger_1():
+        return render_template("anger_1.html")
 
+    @app.route("/anger_2")
+    def anger_2():
+        return render_template("anger_2.html")
 
+    @app.route("/anger_3")
+    def anger_3():
+        return render_template("anger_3.html")
+
+    @app.route("/submit")
+    def submit():
+        return render_template("submit.html")
+
+    # Academic Stress Route
+    @app.route("/academic_stress")
+    def academic_stress():
+        return render_template("set_a_as.html")
+
+    # API Endpoint to Save Responses in MongoDB
+    @app.route("/api/save-response", methods=["POST"])
+    def save_response():
+        data = request.json
+        if not data or "responses" not in data:
+            return jsonify({"error": "Invalid request"}), 400
+
+        mongo.db.responses.insert_one(data)
+        return jsonify({"message": "Response saved successfully"}), 201
 
     return app
 

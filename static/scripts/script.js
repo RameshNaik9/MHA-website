@@ -14,29 +14,35 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 /**
- * Submits the test, stores answers, and redirects to the next test.
- * @param {string} testType - "anger" or "academic_stress"
+ * Stores answers and moves to next set
  */
-function submitTest(testType) {
-    let answers = {};
-
-    document.querySelectorAll("input[type='radio']:checked").forEach((radio) => {
-        answers[radio.name] = radio.value;
+function submitAngerTest() {
+    let answers = JSON.parse(localStorage.getItem("anger_answers")) || {};
+    
+    document.querySelectorAll("#anger-test input[type='radio']:checked").forEach((radio) => {
+        answers[radio.name] = parseInt(radio.value);
     });
 
-    // Store answers in localStorage
-    localStorage.setItem(testType + "_answers", JSON.stringify(answers));
-
-    // Determine next page based on test type
-    let nextPage = "";
-    if (testType === "anger") {
-        nextPage = "/set_B1"; // Adjust based on your Flask routes
-    } else if (testType === "academic_stress") {
-        nextPage = "/set_B1-AS";
-    }
-
-    // Redirect to next test page
-    window.location.href = nextPage;
+    localStorage.setItem("anger_answers", JSON.stringify(answers));
+    window.location.href = "/anger_2";  // Redirect to anger_2.html
 }
 
-
+/**
+ * Final Submission - Store in Database via API
+ */
+function submitFinalTest() {
+    let answers = JSON.parse(localStorage.getItem("anger_answers"));
+    
+    fetch("/api/save-response", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            email: "test@example.com", 
+            responses: answers
+        })
+    }).then(response => response.json())
+    .then(data => {
+        console.log("Submission successful:", data);
+        window.location.href = "/submit"; // Redirect to submission page
+    }).catch(error => console.error("Error:", error));
+}

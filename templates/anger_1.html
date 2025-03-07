@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anger Test - Part 1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+</head>
+
+<body>
+    <section class="set_a">
+        <nav>
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.jpg') }}"></a>
+            <div class="nav-links" id="navlinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">ABOUT</a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('about') }}">About Us</a>
+                            <a href="{{ url_for('our_approach') }}">Our Approach</a>
+                            <a href="#">Safety, Quality and Compliance</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">TESTS</a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('anger_1') }}">Anger</a>
+                            <a href="#">Depression</a>
+                        <!-- <a href="{{ url_for('academic_stress') }}">Academic Stress</a> -->
+                            <a href="#">Anxiety</a>
+                        </div>
+                    </li>
+                    <button class="btnLogin-popup">Login</button>
+                </ul>
+            </div>
+        </nav>
+
+        <h2>Demographic Information:</h2>
+        <form id="demographic-form">
+            <div>
+                <label for="age-group">Age group:</label>
+                <select id="age-group" name="age-group">
+                    <option value="under18">Under 18</option>
+                    <option value="18to24">18-24</option>
+                    <option value="25to34">25-34</option>
+                    <option value="35to44">35-44</option>
+                    <option value="45to54">45-54</option>
+                    <option value="55to64">55-64</option>
+                    <option value="65andover">65 and over</option>
+                </select>
+            </div>
+            <div>
+                <label for="academic-year">Academic year/level:</label>
+                <input type="text" id="academic-year" name="academic-year">
+            </div>
+            <div>
+                <label for="major">Major/field of study:</label>
+                <input type="text" id="major" name="major">
+            </div>
+        </form>
+
+        <h2>Anger Questionnaires</h2>
+        <form id="anger-test">
+            <div class="question">
+                <label>1. I can't help getting into arguments with others.</label>
+                <div class="options">
+                    <input type="radio" name="q1" value="5"> Strongly Agree
+                    <input type="radio" name="q1" value="4"> Agree
+                    <input type="radio" name="q1" value="3"> Neutral
+                    <input type="radio" name="q1" value="2"> Disagree
+                    <input type="radio" name="q1" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <div class="question">
+                <label>2. If someone teases me or makes a joke about me, I lose my temper.</label>
+                <div class="options">
+                    <input type="radio" name="q2" value="5"> Strongly Agree
+                    <input type="radio" name="q2" value="4"> Agree
+                    <input type="radio" name="q2" value="3"> Neutral
+                    <input type="radio" name="q2" value="2"> Disagree
+                    <input type="radio" name="q2" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <div class="question">
+                <label>3. Even when my anger is aroused, I don't use strong language.</label>
+                <div class="options">
+                    <input type="radio" name="q3" value="5"> Strongly Agree
+                    <input type="radio" name="q3" value="4"> Agree
+                    <input type="radio" name="q3" value="3"> Neutral
+                    <input type="radio" name="q3" value="2"> Disagree
+                    <input type="radio" name="q3" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <div class="question">
+                <label>4. I have become so mad that I have broken things.</label>
+                <div class="options">
+                    <input type="radio" name="q4" value="5"> Strongly Agree
+                    <input type="radio" name="q4" value="4"> Agree
+                    <input type="radio" name="q4" value="3"> Neutral
+                    <input type="radio" name="q4" value="2"> Disagree
+                    <input type="radio" name="q4" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <button type="button" onclick="submitAngerTest()">Next</button>
+        </form>
+    </section>
+
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+</body>
+
+</html>

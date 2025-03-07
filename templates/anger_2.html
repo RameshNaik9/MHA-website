@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anger Test - Set B1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+</head>
+
+<body>
+    <section class="set_b1">
+        <nav>
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.jpg') }}"></a>
+            <div class="nav-links" id="navlinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">ABOUT</a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('about') }}">About Us</a>
+                            <a href="{{ url_for('our_approach') }}">Our Approach</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">TESTS</a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('anger_1') }}">Anger</a>
+                            <a href="#">Depression</a>
+                            <a href="{{ url_for('academic_stress') }}">Academic Stress</a>
+                            <a href="#">Anxiety</a>
+                        </div>
+                    </li>
+                    <button class="btnLogin-popup">Login</button>
+                </ul>
+            </div>
+        </nav>
+
+        <h2>Anger Questionnaire - Set B1</h2>
+        <form id="anger-test">
+            <div class="question">
+                <label>5. I am an even-tempered person.</label>
+                <div class="options">
+                    <input type="radio" name="q5" value="5"> Strongly Agree
+                    <input type="radio" name="q5" value="4"> Agree
+                    <input type="radio" name="q5" value="3"> Neutral
+                    <input type="radio" name="q5" value="2"> Disagree
+                    <input type="radio" name="q5" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <div class="question">
+                <label>6. I have many arguments with members of my family.</label>
+                <div class="options">
+                    <input type="radio" name="q6" value="5"> Strongly Agree
+                    <input type="radio" name="q6" value="4"> Agree
+                    <input type="radio" name="q6" value="3"> Neutral
+                    <input type="radio" name="q6" value="2"> Disagree
+                    <input type="radio" name="q6" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <div class="question">
+                <label>7. When I feel angry, I take time to think before I react.</label>
+                <div class="options">
+                    <input type="radio" name="q7" value="5"> Strongly Agree
+                    <input type="radio" name="q7" value="4"> Agree
+                    <input type="radio" name="q7" value="3"> Neutral
+                    <input type="radio" name="q7" value="2"> Disagree
+                    <input type="radio" name="q7" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <div class="question">
+                <label>8. If I bought a new product and realized it didn't work, I would be furious.</label>
+                <div class="options">
+                    <input type="radio" name="q8" value="5"> Strongly Agree
+                    <input type="radio" name="q8" value="4"> Agree
+                    <input type="radio" name="q8" value="3"> Neutral
+                    <input type="radio" name="q8" value="2"> Disagree
+                    <input type="radio" name="q8" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <div class="question">
+                <label>9. I can communicate how I'm feeling without becoming aggressive.</label>
+                <div class="options">
+                    <input type="radio" name="q9" value="5"> Strongly Agree
+                    <input type="radio" name="q9" value="4"> Agree
+                    <input type="radio" name="q9" value="3"> Neutral
+                    <input type="radio" name="q9" value="2"> Disagree
+                    <input type="radio" name="q9" value="1"> Strongly Disagree
+                </div>
+            </div>
+
+            <button type="button" onclick="window.location.href='{{ url_for('anger_1') }}';">Before</button>
+            <button type="button" onclick="submitAngerTest()">Next</button>
+        </form>
+    </section>
+
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+</body>
+
+</html>
