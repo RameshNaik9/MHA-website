@@ -7,7 +7,7 @@ def create_user(user_data):
 
 
 def get_user(email):
-    return mongo.db.users.find_one({"email": email})
+    return mongo.db.users.find_one({"email": email}, {"_id": 0})
 
 
 # Questionnaire Responses Collection

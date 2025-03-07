@@ -31,6 +31,20 @@ def create_app():
     @app.route("/our-approach")
     def our_approach():
         return render_template("Our_Approach.html")
+    
+    @app.route("/set_A")
+    def set_a():
+        return render_template("set_A.html")
+    
+    @app.route("/set_A-AS")
+    def set_a_as():
+        return render_template("set_A-AS.html")
+
+    @app.route("/set_B1")
+    def set_b1():
+        return render_template("set_B1.html")
+
+
 
     return app
 

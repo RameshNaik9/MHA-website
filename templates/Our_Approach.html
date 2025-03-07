@@ -1,66 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta name="viewport" content="with=device-width, initial-scale=1.0">
-    <title>MHA Website</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<link rel="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Approach - MHA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
+
 <body>
     <section class="Our_approach">
         <nav>
-            <a href="index.html"><img src="images/logo.jpg"></a>
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.jpg') }}"></a>
             <div class="nav-links" id="navlinks">
-                <i class="fa fa-times" onclick="hidemenu()"></i>
+                <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropbtn">ABOUT</a>
-                        <div class="dropdown-content">
-                            <a href="about.html">About Us</a>
-                            <a href="Our_Approach.html">Our Approach</a>
-                        </div>
-                    </li>
-                    
-                     <li class="dropdown">
-                        <a href="#" class="dropbtn">TESTS</a>
-                        <div class="dropdown-content">
-                            <a href="set_A.html">Anger</a>
-                            <a href="#">Depression</a>
-                            <a href="set_A-AS.html">Academic Stress</a>
-                            <a href="#">Anxiety</a>
-                        </div>
-                    </li>
-                    <button class="btnLogin-popup">Login</button>
+                    <li><a href="{{ url_for('index') }}">HOME</a></li>
                 </ul>
             </div>
-            <i class="fa fa-bars" onclick="showmenu()"></i>
         </nav>
         <h1>Our Approach</h1>
-        <subsection class="our_app">
-            <div class="peace">
-                    <h1>Understand Yourself Better</h1>
-                    <p>At "Mental Health Awareness Test," we guide individuals towards emotional well-being and healthy social relations.<br> Our approach involves a series of tailored assessments covering anger, academic stress, anxiety, and depression.<br> Participants journey through thought-provoking questions, adapted based on previous responses, to uncover deeper insights.<br> We encourage regular participation to unveil hidden issues and empower informed decisions.<br> Beyond scores, we prioritize self-care, fostering a culture of compassion and understanding. <br>Together, let's embark on this transformative journey towards inner peace.</p>
-                    <a href="set_A.html" class="hero-btn green-btn">give Test</a>
-            </div>
-        </subsection>
-
+        <div class="peace">
+            <h1>Understand Yourself Better</h1>
+            <p>At MHA, we guide individuals towards emotional well-being through assessments covering anger, academic
+                stress, anxiety, and depression.</p>
+            <a href="{{ url_for('set_a') }}" class="hero-btn green-btn">Take a Test</a>
+        </div>
     </section>
-   
-<!----javascript for toggle menu------->
-    <script>
-        var navlinks= document.getElementById("navlinks");
 
-        function showMenu(){
-            navLinks.style.right ="0";
-        }
-        function hideMenu(){
-            navLinks.style.right ="-200";
-        }
-
-    </script>
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
 </body>
+
 </html>
